@@ -7,42 +7,44 @@ import { Dialog, DialogPanel } from '@headlessui/react';
 
 
 export default function Nav() {
-const [ mobileMenuOpen, setMobileMenuOpen ] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     return (
-        <div className="flex h-full flex-col px-3 py-4 md:px-2">
+        <div className="flex h-full flex-col px-3 py-4 md:px-2 min-w-6xl">
             <header className="absolute inset-x-0 top-0 z-50">
-                <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">                    
-                    <div className="flex lg:hidden">
-                        <button
-                            type="button"
-                            onClick={() => setMobileMenuOpen(true)}
-                            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-                        >
-                            <span className="sr-only">Open main menu</span>
-                            <Bars3Icon aria-hidden="true" className="size-6" />
-                        </button>
-                    </div>
-                    <div className="hidden lg:flex lg:gap-x-12">
-                        {/* {navigation.map((item) => (
+                <div className="grid grid-flow-col justify-items-center">
+                    <nav aria-label="Global" className="flex justify-end p-6 lg:px-8 max-w-7xl">
+                        <div className="flex lg:hidden">
+                            <button
+                                type="button"
+                                onClick={() => setMobileMenuOpen(true)}
+                                className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+                            >
+                                <span className="sr-only">Open main menu</span>
+                                <Bars3Icon aria-hidden="true" className="size-6" />
+                            </button>
+                        </div>
+                        <div className="hidden lg:flex lg:gap-x-12 lg:justify-end">
+                            {/* {navigation.map((item) => (
                             <a key={item.name} href={item.href} className="text-sm/6 font-semibold text-gray-900">
                                 {item.name}
                             </a>
                         ))} */}
-                        <NavLinks />
-                    </div>
-                    <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+                            <NavLinks />
+                        </div>
+                        {/* <div className="hidden lg:flex lg:flex-1 lg:justify-end">
                         <a href="#" className="text-sm/6 font-semibold text-gray-900">
                             Log in <span aria-hidden="true">&rarr;</span>
                         </a>
-                    </div>
-                </nav>
+                    </div> */}
+                    </nav>
+                </div>
                 <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
                     <div className="fixed inset-0 z-50" />
                     <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                         <div className="flex items-center justify-between">
                             <a href="#" className="-m-1.5 p-1.5">
-                                <span className="sr-only">Your Company</span>
+                                <span className="sr-only">CMB Exteriors</span>
                                 <img
                                     alt=""
                                     src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
