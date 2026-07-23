@@ -21,6 +21,9 @@ export default function About() {
                         </div>
                     </div>
 
+                    <div className="text-center my-2">
+                        <h2 className="text-3xl font-bold">Focus On Excellence</h2>
+                    </div>
                     <div className="grid grid-cols-3">
                         <DesignFocus />
                     </div>
