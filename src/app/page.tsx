@@ -15,7 +15,7 @@ export default function Home() {
               height={200}
               priority
             /> */}
-            <img src="/logo.png" alt="business logo image" className="-mt-20 w-md"></img>
+            <img src="/logo.PNG" alt="business logo image" className="-mt-20 w-md"></img>
           </div>
           <div className="text-center">
             <h1 className={`text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl ${radley.className}`}>
