@@ -3,7 +3,7 @@ import { radley, carlito } from '@/app/ui/fonts';
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center font-sans dark:bg-black bg-[#f4f1e8]"> {/* bg-zinc-50 */}
+    <div className="flex flex-col flex-1 items-center justify-center font-sans bg-[#f4f1e8]"> {/* bg-zinc-50 */}
       <div className="relative isolate px-6 pt-14 lg:px-8">
         <div className="mx-auto max-w-6xl py-5 sm:py-8 lg:py-6">
           <div className="hidden sm:mb-2 sm:flex sm:justify-center lg:mx-16">
