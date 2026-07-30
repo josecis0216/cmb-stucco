@@ -17,7 +17,7 @@ export default function About() {
                         </div>
 
                         <div className="hidden sm:mb-2 sm:flex sm:justify-center">
-                            <img src="/logo.png" alt="headshot of ceo" className="w-md"></img>
+                            <img src="/logo.PNG" alt="headshot of ceo" className="w-md"></img>
                         </div>
                     </div>
 
