@@ -47,7 +47,7 @@ export default function Nav() {
                                 <span className="sr-only">CMB Exteriors</span>
                                 <img
                                     alt="cmb exteriors logo"
-                                    src="/logo.png"
+                                    src="/logo.PNG"
                                     className="h-16 w-auto"
                                 />
                             </a>
