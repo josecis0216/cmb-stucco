@@ -17,7 +17,7 @@ export default function Nav() {
                         <div className="flex lg:hidden">
                             <button
                                 type="button"
-                                onClick={() => setMobileMenuOpen(true)}
+                                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                                 className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
                             >
                                 <span className="sr-only">Open main menu</span>
@@ -30,7 +30,7 @@ export default function Nav() {
                                 {item.name}
                             </a>
                         ))} */}
-                            <NavLinks />
+                            <NavLinks mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
                         </div>
                         {/* <div className="hidden lg:flex lg:flex-1 lg:justify-end">
                         <a href="#" className="text-sm/6 font-semibold text-gray-900">
@@ -46,18 +46,19 @@ export default function Nav() {
                             <a href="#" className="-m-1.5 p-1.5">
                                 <span className="sr-only">CMB Exteriors</span>
                                 <img
-                                    alt=""
-                                    src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                                    className="h-8 w-auto"
+                                    alt="cmb exteriors logo"
+                                    src="/logo.png"
+                                    className="h-16 w-auto"
                                 />
                             </a>
                             <button
                                 type="button"
-                                onClick={() => setMobileMenuOpen(false)}
+                                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                                 className="-m-2.5 rounded-md p-2.5 text-gray-700"
                             >
                                 <span className="sr-only">Close menu</span>
-                                <XMarkIcon aria-hidden="true" className="size-6" />
+                                {/* <XMarkIcon aria-hidden="true" className="size-6" /> */}
+                                Close
                             </button>
                         </div>
                         <div className="mt-6 flow-root">
@@ -72,16 +73,16 @@ export default function Nav() {
                                             {item.name}
                                         </a>
                                     ))} */}
-                                    <NavLinks />
+                                    <NavLinks mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
                                 </div>
-                                <div className="py-6">
+                                {/* <div className="py-6">
                                     <a
                                         href="#"
                                         className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                                     >
                                         Log in
                                     </a>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </DialogPanel>

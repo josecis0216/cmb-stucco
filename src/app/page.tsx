@@ -6,16 +6,8 @@ export default function Home() {
     <div className="flex flex-col flex-1 items-center justify-center font-sans bg-[#f4f1e8]"> {/* bg-zinc-50 */}
       <div className="relative isolate px-6 pt-14 lg:px-8">
         <div className="mx-auto max-w-6xl py-5 sm:py-8 lg:py-6">
-          <div className="hidden sm:mb-2 sm:flex sm:justify-center lg:mx-16">
-            {/* <Image
-              className="dark:invert"
-              src="/logo.png"
-              alt="cmb logo"
-              width={400}
-              height={200}
-              priority
-            /> */}
-            <img src="/logo.PNG" alt="business logo image" className="-mt-20 w-md"></img>
+          <div className="sm:mb-2 sm:flex sm:justify-center lg:mx-16">
+            <img src="/logo.PNG" alt="business logo image" className="lg:-mt-20 lg:w-md"></img>
           </div>
           <div className="text-center">
             <h1 className={`text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl ${radley.className}`}>

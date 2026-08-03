@@ -8,8 +8,8 @@ export default function Contact() {
     return <div className="flex flex-col flex-1 items-center justify-center font-sans bg-[#f4f1e8]"> {/* bg-zinc-50 dark:bg-black */}
         <div className="relative isolate px-6 lg:px-8">
             <div className="mx-auto max-w-5xl py-5 sm:py-8 lg:py-6">
-                <div className="grid grid-cols-2">
-                    <div className="text-left mx-auto">
+                <div className="grid sm:grid-cols-1 lg:grid-cols-2">
+                    <div className="text-left mt-10">
                         <h1 className={`text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl ${radley.className}`}>
                             Reach out for a free quote today!
                         </h1>
@@ -23,7 +23,7 @@ export default function Contact() {
                         </div>
                     </div>
 
-                    <div className="hidden sm:mb-2 sm:flex sm:justify-center">
+                    <div className="sm:mb-2 sm:flex sm:justify-center mt-8">
                         <ContactForm />
                     </div>
                 </div>

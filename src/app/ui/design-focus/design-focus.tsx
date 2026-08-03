@@ -15,7 +15,7 @@ export default function DesignFocus() {
     <>
       {designs.map((design) => {       
         return (
-            <section key={design.title} className="text-center">
+            <section key={design.title} className="text-center my-3">
                 <img src={design.src} alt={design.alt} className="w-72 h-72 rounded-t-full object-cover mx-auto"></img>
                 <h3 className="text-xl font-bold mt-2">{design.title}</h3>
                 <hr className="my-6 border-t border-gray-300 mx-2" />

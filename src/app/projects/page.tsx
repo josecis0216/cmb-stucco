@@ -8,7 +8,7 @@ export default function Projects() {
                 <div className="mx-auto max-w-5xl py-5 sm:py-8 lg:py-6">
                     <h1 className={`text-5xl font-bold text-center mb-10 ${radley.className}`}>Project Gallery</h1>
 
-                    <div className="grid grid-cols-3">
+                    <div className="grid sm:grid-cols-1 lg:grid-cols-3">
                         <ProjectsComp />
                     </div>
                 </div>
