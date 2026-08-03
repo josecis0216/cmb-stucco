@@ -17,7 +17,7 @@ export default function Home() {
               Your expert in exterior customizable finishes. Experienced in commercial or residential.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <p className={`${radley.className}`}>EST. {new Date().getFullYear()}</p>
+              <p className={`${radley.className}`}>EST. 2026</p>
             </div>
           </div>
         </div>
