@@ -50,7 +50,7 @@ export default function NavLinks({ mobileMenuOpen, setMobileMenuOpen }: ChildPro
             onClick={() => setMobileMenuOpen(false)}
           >
             <LinkIcon className="w-6" />
-            <p className="hidden md:block">{link.name}</p>
+            <p>{link.name}</p>
           </Link>
         );
       })}

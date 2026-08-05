@@ -4,6 +4,7 @@ import NavLinks from '@/app/ui/nav-links';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 import { Dialog, DialogPanel } from '@headlessui/react';
+import { radley, carlito } from "../ui/fonts"
 
 
 export default function Nav() {
@@ -12,8 +13,13 @@ export default function Nav() {
     return (
         <div className="flex h-full flex-col px-3 py-4 md:px-2 min-w-6xl">
             <header className="absolute inset-x-0 top-0 z-50">
-                <div className="grid grid-flow-col justify-items-center">
-                    <nav aria-label="Global" className="flex justify-end p-6 lg:px-8 max-w-7xl">
+                <div className="grid grid-cols-[40%_20%_40%] lg:grid-cols-3 justify-items-center">  {/* grid-flow-col */}
+                    <img
+                        alt="cmb exteriors logo"
+                        src="/logo.PNG"
+                        className="w-1/2 lg:w-1/6 flex lg:justify-start" />
+
+                    <nav aria-label="Global" className="flex p-6 lg:px-8">
                         <div className="flex lg:hidden">
                             <button
                                 type="button"
@@ -25,11 +31,7 @@ export default function Nav() {
                             </button>
                         </div>
                         <div className="hidden lg:flex lg:gap-x-12 lg:justify-end">
-                            {/* {navigation.map((item) => (
-                            <a key={item.name} href={item.href} className="text-sm/6 font-semibold text-gray-900">
-                                {item.name}
-                            </a>
-                        ))} */}
+
                             <NavLinks mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
                         </div>
                         {/* <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -38,6 +40,8 @@ export default function Nav() {
                         </a>
                     </div> */}
                     </nav>
+
+                    <span className="flex items-center text-2xl lg:text-4xl"><a href="tel:8016381332" className={`${radley.className} `}>801-638-1332</a></span>
                 </div>
                 <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
                     <div className="fixed inset-0 z-50" />
@@ -91,3 +95,9 @@ export default function Nav() {
         </div>
     );
 }
+
+{/* {navigation.map((item) => (
+                            <a key={item.name} href={item.href} className="text-sm/6 font-semibold text-gray-900">
+                                {item.name}
+                            </a>
+                        ))} */}

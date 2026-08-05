@@ -7,7 +7,7 @@ import { FaFacebook, FaInstagram } from 'react-icons/fa';
 export default function Contact() {
     return <div className="flex flex-col flex-1 items-center justify-center font-sans bg-[#f4f1e8]"> {/* bg-zinc-50 dark:bg-black */}
         <div className="relative isolate px-6 lg:px-8">
-            <div className="mx-auto max-w-5xl py-5 sm:py-8 lg:py-6">
+            <div className="mx-auto max-w-5xl py-5 sm:py-8 lg:py-6 mt-[55px]">
                 <div className="grid sm:grid-cols-1 lg:grid-cols-2">
                     <div className="text-left mt-10">
                         <h1 className={`text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl ${radley.className}`}>
