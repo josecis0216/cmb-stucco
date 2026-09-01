@@ -6,6 +6,7 @@ export type Project = {
     img_desc: string;
     alt_text: string;
     src: string;
+    src_after: string;
 };
 
 export type Message = {
