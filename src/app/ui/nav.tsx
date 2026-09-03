@@ -11,7 +11,7 @@ export default function Nav() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     return (
-        <div className="flex h-full flex-col px-3 py-4 md:px-2 min-w-6xl">
+        <div className="flex h-full flex-col px-3 py-4 md:px-2">
             <header className="absolute inset-x-0 top-0 z-50">
                 <div className="grid grid-cols-[40%_20%_40%] lg:grid-cols-3 justify-items-center">  {/* grid-flow-col */}
                     <img

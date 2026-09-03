@@ -37,11 +37,11 @@ export const Carousel: React.FC<CarouselProps> = ({
     <div className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-2xl group">
       {/* Slides Wrapper */}
       <div
-        className="flex transition-transform duration-500 ease-out"
+        className="flex transition-transform duration-500 ease-out overflow-x-auto scroll-smooth snap-x snap-mandatory touch-pan-x cursor-grab active:cursor-grabbing select-none"
         style={{ transform: `translateX(-${curr * 100}%)` }}
       >
         {slides.map((slide, index) => (
-          <div key={index} className="relative w-full flex-shrink-0 aspect-[16/9]">
+          <div key={index} className="relative w-full flex-shrink-0 aspect-[16/9] snap-start ">
             {/* Slide Image */}
             <img
               src={slide.image}
