@@ -1,6 +1,15 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+// Example slides data
+// const SLIDES = [
+//   { id: 1, title: 'Slide 1', bg: 'bg-blue-500' },
+//   { id: 2, title: 'Slide 2', bg: 'bg-emerald-500' },
+//   { id: 3, title: 'Slide 3', bg: 'bg-purple-500' },
+// ];
 
 interface Slide {
   image: string;
@@ -14,83 +23,100 @@ interface CarouselProps {
 }
 
 export const Carousel: React.FC<CarouselProps> = ({
-  slides,
-  autoSlide = true,
-  autoSlideInterval = 5000,
-}) => {
-  const [curr, setCurr] = useState<number>(0);
+    slides}) => {
+  const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(0); // -1 for left, 1 for right
 
-  const prev = () =>
-    setCurr((curr) => (curr === 0 ? slides.length - 1 : curr - 1));
+  const slideWidth = 100; // percentage-based width
 
-  const next = useCallback(() => {
-    setCurr((curr) => (curr === slides.length - 1 ? 0 : curr + 1));
-  }, [slides.length]);
+  const nextSlide = () => {
+    setDirection(1);
+    setIndex((prev) => (prev + 1) % slides.length);
+  };
 
-  useEffect(() => {
-    if (!autoSlide) return;
-    const slideInterval = setInterval(next, autoSlideInterval);
-    return () => clearInterval(slideInterval);
-  }, [autoSlide, autoSlideInterval, next]);
+  const prevSlide = () => {
+    setDirection(-1);
+    setIndex((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  // Handle swipe physics on mobile
+  const handleDragEnd = (event: any, info: any) => {
+    const swipeThreshold = 50; // minimum pixels to register a swipe
+    if (info.offset.x < -swipeThreshold) {
+      nextSlide();
+    } else if (info.offset.x > swipeThreshold) {
+      prevSlide();
+    }
+  };
+
+  // Animation configuration
+  const variants = {
+    enter: (dir: number) => ({
+      x: dir > 0 ? '100%' : '-100%',
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (dir: number) => ({
+      x: dir < 0 ? '100%' : '-100%',
+      opacity: 0,
+    }),
+  };
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-2xl group">
-      {/* Slides Wrapper */}
-      <div
-        className="flex transition-transform duration-500 ease-out overflow-x-auto scroll-smooth snap-x snap-mandatory touch-pan-x cursor-grab active:cursor-grabbing select-none"
-        style={{ transform: `translateX(-${curr * 100}%)` }}
-      >
-        {slides.map((slide, index) => (
-          <div key={index} className="relative w-full flex-shrink-0 aspect-[16/9] snap-start ">
-            {/* Slide Image */}
-            <img
-              src={slide.image}
-              alt={slide.description}
-              className="w-full h-full object-cover"
-            />
-            {/* Dark Overlay Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-            
-            {/* Caption Text Box */}
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12 text-white text-left transform translate-y-0 transition-all duration-300">
-              <p className="text-sm md:text-base text-gray-200 drop-shadow-sm max-w-2xl">
-                {slide.description}
-              </p>
-            </div>
-          </div>
-        ))}
+    <div className="relative w-full max-w-4xl mx-auto h-80 overflow-hidden rounded-2xl bg-gray-100 shadow-lg group">
+      {/* Slides Container */}
+      <div className="relative w-full h-full">
+        <AnimatePresence initial={false} custom={direction}>
+          <motion.img
+            key={index}
+            src={slides[index].image}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={1}
+            onDragEnd={handleDragEnd}
+            className={`absolute inset-0 w-full h-full flex items-center justify-center text-white text-3xl font-bold cursor-grab active:cursor-grabbing`}
+          />
+          {slides[index].description}
+        </AnimatePresence>
       </div>
 
-      {/* Navigation Arrow Left */}
+      {/* Desktop-Only Arrow Controls (Hidden on touch screens/mobile) */}
       <button
-        onClick={prev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/30 text-white hover:bg-white/50 backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 hidden md:block"
+        onClick={prevSlide}
+        className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 items-center justify-center rounded-full bg-white/30 backdrop-blur-sm text-white hover:bg-white/50 transition-colors opacity-0 group-hover:opacity-100 duration-300 focus:outline-none"
         aria-label="Previous slide"
       >
-        <svg xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-        </svg>
+        <ChevronLeft className="w-6 h-6 text-gray-800" />
       </button>
 
-      {/* Navigation Arrow Right */}
       <button
-        onClick={next}
-        className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/30 text-white hover:bg-white/50 backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 hidden md:block"
+        onClick={nextSlide}
+        className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 items-center justify-center rounded-full bg-white/30 backdrop-blur-sm text-white hover:bg-white/50 transition-colors opacity-0 group-hover:opacity-100 duration-300 focus:outline-none"
         aria-label="Next slide"
       >
-        <svg xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-        </svg>
+        <ChevronRight className="w-6 h-6 text-gray-800" />
       </button>
 
       {/* Slide Indicators / Dots */}
-      <div className="absolute bottom-4 left-0 right-0 flex items-center justify-center gap-2">
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
         {slides.map((_, i) => (
           <button
             key={i}
-            onClick={() => setCurr(i)}
-            className={`transition-all w-3 h-3 bg-white rounded-full ${
-              curr === i ? "p-1 w-6" : "bg-opacity-50"
+            onClick={() => {
+              setDirection(i > index ? 1 : -1);
+              setIndex(i);
+            }}
+            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+              index === i ? 'bg-white scale-125' : 'bg-white/50'
             }`}
             aria-label={`Go to slide ${i + 1}`}
           />
@@ -98,4 +124,4 @@ export const Carousel: React.FC<CarouselProps> = ({
       </div>
     </div>
   );
-};
+}

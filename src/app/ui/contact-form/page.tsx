@@ -27,10 +27,10 @@ export default function ContactForm() {
     };
 
     return (
-        <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
+        <form ref={formRef} onSubmit={handleSubmit} className="space-y-5 ml-5">
             {/* Name Field */}
-            <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+            <div className="md:w-xl">
+                <label htmlFor="name" className="block text-lg font-medium text-gray-700 mb-1">
                     Full Name
                 </label>
                 <input
@@ -45,7 +45,7 @@ export default function ContactForm() {
 
             {/* Email Field */}
             <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="email" className="block text-lg font-medium text-gray-700 mb-1">
                     Email Address
                 </label>
                 <input
@@ -60,7 +60,7 @@ export default function ContactForm() {
 
             {/* Message Field */}
             <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="message" className="block text-lg font-medium text-gray-700 mb-1">
                     Your Message
                 </label>
                 <textarea

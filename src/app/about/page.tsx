@@ -3,7 +3,7 @@ import DesignFocus from "@/app/ui/design-focus/design-focus";
 
 export default function About() {
     return (
-        <div className="flex flex-col flex-1 items-center justify-center font-sans bg-[#f4f1e8]"> {/* bg-zinc-50 dark:bg-black */}
+        <div className="flex flex-col flex-1 items-center justify-center font-sans"> {/* bg-zinc-50 dark:bg-black */}
             <div className="relative isolate px-6 pt-14 lg:px-8">
                 <div className="mx-auto max-w-5xl py-5 sm:py-8 lg:py-6">
                     <div className="grid sm:grid-cols-1 lg:grid-cols-2">
