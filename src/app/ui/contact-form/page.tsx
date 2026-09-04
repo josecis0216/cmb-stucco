@@ -11,13 +11,23 @@ export default function ContactForm() {
     const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
         e.preventDefault();
         setStatus('loading');
-
+ 
         const formData = new FormData(e.currentTarget);
 
         try {
-            const response = await createContactMessage(formData);
+            // const response = await createContactMessage(formData);
+            const response = await fetch('/api/send', {
+                method: 'POST',
+                body: JSON.stringify({
+                    name: formData.get('name'), 
+                    email: formData.get('email'),
+                    message: formData.get('message'),
+                }),
+                headers: { 'Content-Type': 'application/json' },
+            });
 
-            if (response.success) {
+            // if (response.success) {
+            if (response.ok) {
                 setStatus('success');
                 formRef.current?.reset();
             }
@@ -77,7 +87,7 @@ export default function ContactForm() {
             <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="w-full py-2.5 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg shadow-sm transition duration-150 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                className="w-full cursor-pointer py-2.5 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg shadow-sm transition duration-150 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
                 {status === 'loading' ? 'Sending...' : 'Send Message'}
             </button>

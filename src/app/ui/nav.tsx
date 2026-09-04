@@ -5,6 +5,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 import { Dialog, DialogPanel } from '@headlessui/react';
 import { radley, carlito } from "../ui/fonts"
+import Link from 'next/link';
 
 
 export default function Nav() {
@@ -12,22 +13,24 @@ export default function Nav() {
 
     return (
         <div className="flex h-full flex-col px-3 py-4 md:px-2">
-            <header className="absolute inset-x-0 top-0 z-50">
-                <div className="grid grid-cols-[40%_20%_40%] lg:grid-cols-3 justify-items-center">  {/* grid-flow-col */}
-                    <img
+            <header className="absolute inset-x-0 top-0 z-50 text-center justify-items-center">
+                <div className="grid grid-cols-[30%_30%_40%] md:grid-cols-[20%_60%_20%] md:grid-cols-3 justify-items-center">  {/* grid-flow-col */}
+                    <Link href="/" className="md:justify-items-center">
+                        <img
                         alt="cmb exteriors logo"
                         src="/logo.PNG"
-                        className="w-1/2 lg:w-1/6 flex lg:justify-start" />
+                        className="w-full md:w-1/4 flex lg:justify-end" />
+                    </Link>
 
                     <nav aria-label="Global" className="flex p-6 lg:px-8">
                         <div className="flex lg:hidden">
                             <button
                                 type="button"
                                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                                className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+                                className="cursor-pointer inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
                             >
                                 <span className="sr-only">Open main menu</span>
-                                <Bars3Icon aria-hidden="true" className="size-6" />
+                                <Bars3Icon aria-hidden="true" className="size-10" />
                             </button>
                         </div>
                         <div className="hidden lg:flex lg:gap-x-12 lg:justify-end">
@@ -47,14 +50,11 @@ export default function Nav() {
                     <div className="fixed inset-0 z-50" />
                     <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                         <div className="flex items-center justify-between">
-                            <a href="#" className="-m-1.5 p-1.5">
-                                <span className="sr-only">CMB Exteriors</span>
-                                <img
+                            <img
                                     alt="cmb exteriors logo"
                                     src="/logo.PNG"
                                     className="h-16 w-auto"
                                 />
-                            </a>
                             <button
                                 type="button"
                                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
