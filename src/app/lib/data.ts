@@ -5,7 +5,7 @@ const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
 export async function fetchProjects() {
     try {
-        const data = await sql<Project[]>`SELECT * FROM tbl_Projects`;
+        const data = await sql<Project[]>`SELECT * FROM tbl_Projects ORDER BY src ASC`;
 
         console.log('Data fetch completed');
 

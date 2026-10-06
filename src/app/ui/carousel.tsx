@@ -90,24 +90,24 @@ export const Carousel: React.FC<CarouselProps> = ({
       </div>
 
       {/* Desktop-Only Arrow Controls (Hidden on touch screens/mobile) */}
-      <button
+      {slides.length > 1 && <button
         onClick={prevSlide}
         className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 items-center justify-center rounded-full bg-white/30 backdrop-blur-sm text-white hover:bg-white/50 transition-colors opacity-0 group-hover:opacity-100 duration-300 focus:outline-none"
         aria-label="Previous slide"
       >
         <ChevronLeft className="w-6 h-6 text-gray-800" />
-      </button>
+      </button>}
 
-      <button
+      {slides.length > 1 && <button
         onClick={nextSlide}
         className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 items-center justify-center rounded-full bg-white/30 backdrop-blur-sm text-white hover:bg-white/50 transition-colors opacity-0 group-hover:opacity-100 duration-300 focus:outline-none"
         aria-label="Next slide"
       >
         <ChevronRight className="w-6 h-6 text-gray-800" />
-      </button>
+      </button>}
 
       {/* Slide Indicators / Dots */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+      {/* <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
         {slides.map((_, i) => (
           <button
             key={i}
@@ -121,7 +121,7 @@ export const Carousel: React.FC<CarouselProps> = ({
             aria-label={`Go to slide ${i + 1}`}
           />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }

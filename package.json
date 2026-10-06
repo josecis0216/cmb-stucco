@@ -12,6 +12,7 @@
     "@headlessui/react": "^2.2.10",
     "@heroicons/react": "^2.2.0",
     "@react-email/components": "^1.0.12",
+    "@vercel/analytics": "^2.0.1",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.21",
     "framer-motion": "^13.2.0",
